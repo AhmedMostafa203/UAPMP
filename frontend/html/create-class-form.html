@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Add New Class - UAPMP</title>
+
+    <!-- Auth guard -->
+    <script>
+      (function adminGuard() {
+        const token = localStorage.getItem("token");
+        const userJson = localStorage.getItem("user");
+        if (!token || !userJson) { window.location.href = "signin.html"; return; }
+        try {
+          const user = JSON.parse(userJson);
+          if (user.role !== "admin" && user.role !== "super_admin") {
+            window.location.href = "signin.html";
+          }
+        } catch { window.location.href = "signin.html"; }
+      })();
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="admin-add-class.css" />
+  </head>
+
+  <body>
+    <div class="app-wrapper">
+
+      <!-- ── SIDEBAR ────────────────────────────────────────────────────── -->
+      <aside class="sidebar">
+        <div class="sidebar-logo">
+          <div class="sidebar-logo-icon">
+            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="sidebar-logo-text">
+            <h1>UAPMP</h1>
+            <p>Admin Console</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a class="nav-link" href="admin-profile.html">
+            <span class="material-symbols-outlined">dashboard</span>Dashboard
+          </a>
+          <a class="nav-link" href="admin-announcements.html">
+            <span class="material-symbols-outlined">campaign</span>Announcements
+          </a>
+          <a class="nav-link" href="#">
+            <span class="material-symbols-outlined">group</span>Users
+          </a>
+          <a class="nav-link active" href="#">
+            <span class="material-symbols-outlined">menu_book</span>Courses
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <a class="logout-link" href="#" id="logoutBtn">
+            <span class="material-symbols-outlined">logout</span>Logout
+          </a>
+        </div>
+      </aside>
+
+      <!-- ── MAIN ──────────────────────────────────────────────────────── -->
+      <main class="main">
+
+        <!-- Header -->
+        <header class="header">
+          <div class="search-wrap">
+            <span class="material-symbols-outlined">search</span>
+            <input placeholder="Search for students, faculty, or resources..." type="text" />
+          </div>
+          <div class="header-right">
+            <button class="theme-btn" id="themeToggle" title="Toggle dark mode">
+              <span class="material-symbols-outlined" id="themeIcon">dark_mode</span>
+            </button>
+            <div class="admin-info">
+              <div class="admin-info-text">
+                <p class="name" id="welcomeName">Loading...</p>
+                <p class="role" id="userRoleBadge">Admin</p>
+              </div>
+              <img alt="Admin" class="admin-avatar" id="avatarImg" src="https://ui-avatars.com/api/?name=Admin&background=random" />
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Body -->
+        <div class="page-body">
+          <div class="form-card">
+
+            <!-- Card Header -->
+            <div class="form-card-header">
+              <div class="form-card-header-left">
+                <h2>Add New Class</h2>
+                <p>Fill out the details to create a new class</p>
+              </div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="form-card-body">
+              <form id="add-class-form">
+
+                <div class="form-grid">
+                  <!-- Class Name -->
+                  <div class="form-group">
+                    <label class="form-label" for="class-name">
+                      Class Name <span class="required">*</span>
+                    </label>
+                    <div class="input-wrap">
+                      <span class="material-symbols-outlined">menu_book</span>
+                      <input type="text" id="class-name" name="className" class="form-control" placeholder="e.g. Advanced Web Dev" required />
+                    </div>
+                    <span class="field-error" id="error-className">This field is required.</span>
+                  </div>
+
+                  <!-- Year -->
+                  <div class="form-group">
+                    <label class="form-label" for="year">
+                      Year <span class="required">*</span>
+                    </label>
+                    <div class="input-wrap">
+                      <span class="material-symbols-outlined">calendar_today</span>
+                      <input type="number" id="year" name="year" class="form-control" min="2020" max="2100" required disabled />
+                    </div>
+                  </div>
+
+                  <!-- Class Code -->
+                  <div class="form-group">
+                    <label class="form-label" for="class-code">
+                      Class Code <span class="required">*</span>
+                    </label>
+                    <div class="input-wrap">
+                      <span class="material-symbols-outlined">tag</span>
+                      <select id="class-code" name="classCode" class="form-control" required>
+                        <option disabled selected value="">Select Code</option>
+                      </select>
+                    </div>
+                    <span class="field-error" id="error-classCode">Class code is required.</span>
+                  </div>
+
+                  <!-- Semester -->
+                  <div class="form-group">
+                    <label class="form-label" for="semester">
+                      Semester <span class="required">*</span>
+                    </label>
+                    <div class="input-wrap">
+                      <span class="material-symbols-outlined">event</span>
+                      <select id="semester" name="semester" class="form-control" required>
+                        <option disabled selected value="">Select Semester</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Fall">Fall</option>
+                      </select>
+                    </div>
+                    <span class="field-error" id="error-semester">Semester is required.</span>
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+                  <label class="form-label" for="description">Description</label>
+                  <div class="input-wrap top-icon">
+                    <span class="material-symbols-outlined">notes</span>
+                    <textarea id="description" name="description" class="form-control" maxlength="500" rows="3" placeholder="Provide a brief course overview..."></textarea>
+                  </div>
+                  <p class="char-hint">Max 500 characters</p>
+                </div>
+
+                <!-- Form Footer -->
+                <div class="form-footer">
+                  <button type="button" class="btn-cancel" id="btnCancel">Cancel</button>
+                  <button type="submit" class="btn-submit" id="submit-btn">
+                    <span class="material-symbols-outlined" style="font-size:18px">add_circle</span>
+                    Add Class
+                  </button>
+                </div>
+
+                <!-- Response Message -->
+                <div class="response-box" id="responseBox">
+                  <span class="material-symbols-outlined" id="responseIcon">check_circle</span>
+                  <span id="responseText"></span>
+                </div>
+
+                <!-- Join Code -->
+                <div class="join-code-box" id="joinCodeBox">
+                  <span class="material-symbols-outlined">key</span>
+                  <span>Join Code:</span>
+                  <span class="join-code-value" id="joinCodeValue"></span>
+                </div>
+
+                <!-- Countdown -->
+                <p class="countdown-text" id="countdownText"></p>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+      // ─── DARK MODE ─────────────────────────────────────────────────────────
+      const themeToggle = document.getElementById("themeToggle");
+      const themeIcon   = document.getElementById("themeIcon");
+      function applyTheme(dark) {
+        document.body.classList.toggle("dark", dark);
+        themeIcon.textContent = dark ? "light_mode" : "dark_mode";
+        localStorage.setItem("theme", dark ? "dark" : "light");
+      }
+      applyTheme(localStorage.getItem("theme") === "dark");
+      themeToggle.addEventListener("click", () => applyTheme(!document.body.classList.contains("dark")));
+
+      // ─── LOAD ADMIN INFO ───────────────────────────────────────────────────
+      (function loadAdminData() {
+        const userJson = localStorage.getItem("user");
+        if (!userJson) return;
+        try {
+          const user = JSON.parse(userJson);
+          const name = user.fullName || "Admin";
+          const role = user.role || "admin";
+          const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random`;
+          document.getElementById("welcomeName").textContent = name;
+          document.getElementById("userRoleBadge").textContent = role.replace("_", " ").toUpperCase();
+          document.getElementById("avatarImg").src = avatarUrl;
+        } catch (e) { console.error(e); }
+      })();
+
+      // ─── LOGOUT ────────────────────────────────────────────────────────────
+      document.getElementById("logoutBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.href = "signin.html";
+      });
+
+      // ─── CANCEL ────────────────────────────────────────────────────────────
+      document.getElementById("btnCancel").addEventListener("click", function () {
+        window.location.href = "admin-profile.html";
+      });
+
+      // ─── POPULATE COURSE CODES ────────────────────────────────────────────
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set current year and lock
+        const yearInput = document.getElementById("year");
+        yearInput.value = new Date().getFullYear();
+
+        // Populate class code dropdown
+        let COURSE_CODES = window.COURSE_CODES || {
+          CS305: "DESIGN AND ANALYSIS ALGORITHMS",
+          CS307: "DATABASE SYSTEMS I",
+          CS302: "COMPUTER ARCHITECTURE",
+          CS303: "SOFTWARE ENGINEERING",
+          CS306: "OPERATING SYSTEMS",
+          CS304: "COMPUTER GRAPHICS",
+        };
+        const select = document.getElementById("class-code");
+        Object.entries(COURSE_CODES).forEach(([code, name]) => {
+          const opt = document.createElement("option");
+          opt.value = code;
+          opt.textContent = `${code} - ${name}`;
+          select.appendChild(opt);
+        });
+      });
+
+      // ─── RESPONSE HELPERS ──────────────────────────────────────────────────
+      function showResponse(message, isError) {
+        const box  = document.getElementById("responseBox");
+        const text = document.getElementById("responseText");
+        const icon = document.getElementById("responseIcon");
+        text.textContent = message;
+        box.className = "response-box visible " + (isError ? "error" : "success");
+        icon.textContent = isError ? "error" : "check_circle";
+      }
+
+      function showJoinCode(code) {
+        document.getElementById("joinCodeValue").textContent = code;
+        document.getElementById("joinCodeBox").classList.add("visible");
+      }
+
+      function startCountdown(seconds, destination) {
+        const el = document.getElementById("countdownText");
+        el.classList.add("visible");
+        let remaining = seconds;
+        el.textContent = `Redirecting to dashboard in ${remaining}s...`;
+        const interval = setInterval(() => {
+          remaining--;
+          if (remaining <= 0) {
+            clearInterval(interval);
+            window.location.href = destination;
+          } else {
+            el.textContent = `Redirecting to dashboard in ${remaining}s...`;
+          }
+        }, 1000);
+      }
+
+      // ─── FORM SUBMIT ───────────────────────────────────────────────────────
+      document.getElementById("add-class-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const form = e.target;
+
+        // Validation
+        const className  = document.getElementById("class-name").value.trim();
+        const classCode  = document.getElementById("class-code").value;
+        const semester   = document.getElementById("semester").value;
+        const year       = document.getElementById("year").value;
+        const description = document.getElementById("description").value.trim();
+
+        let hasError = false;
+        function setError(id, show) {
+          const el = document.getElementById(id);
+          if (el) { el.classList.toggle("visible", show); }
+        }
+
+        setError("error-className", !className);
+        setError("error-classCode", !classCode || classCode === "");
+        setError("error-semester", !semester || semester === "");
+        if (!className || !classCode || !semester) { hasError = true; }
+        if (hasError) return;
+
+        // Disable submit while loading
+        const submitBtn = document.getElementById("submit-btn");
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size:18px;animation:spin 1s linear infinite">refresh</span> Adding...`;
+
+        const API_URL = (window.API_CONFIG && window.API_CONFIG.BASE_URL) ? window.API_CONFIG.BASE_URL : "http://localhost:5000";
+        const token   = localStorage.getItem("token");
+
+        try {
+          const res = await fetch(`${API_URL}/api/classes`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ name: className, courseCode: classCode, semester, year, description }),
+          });
+
+          let result = {};
+          try { result = await res.json(); } catch (_) {}
+
+          // Re-enable button
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size:18px">add_circle</span> Add Class`;
+
+          if (res.ok) {
+            showResponse("Class created successfully!", false);
+            if (result.class && result.class.joinCode) {
+              showJoinCode(result.class.joinCode);
+            }
+            form.reset();
+            document.getElementById("year").value = new Date().getFullYear();
+            // Auto-redirect countdown
+            startCountdown(1, "admin-profile.html");
+          } else {
+            showResponse(result.message || `Failed to create class. [${res.status}]`, true);
+            document.getElementById("joinCodeBox").classList.remove("visible");
+          }
+        } catch (err) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size:18px">add_circle</span> Add Class`;
+          showResponse("Network error. Please try again.", true);
+          document.getElementById("joinCodeBox").classList.remove("visible");
+        }
+      });
+    </script>
+  </body>
+</html>
