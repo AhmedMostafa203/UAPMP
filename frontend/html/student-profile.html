@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UAPMP Student Portal</title>
+    <link rel="stylesheet" href="../css/student-profile.css" />
+    <link rel="stylesheet" href="../css/courses.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <div class="logo">
+            <div class="logo-icon">
+              <svg
+                class="w-full h-full"
+                fill="none"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <div class="logo-text">
+              <h1>UAPMP</h1>
+              <span>Student Portal</span>
+            </div>
+          </div>
+
+          <nav class="menu">
+            <a href="#" class="menu-item active"
+              ><i class="fas fa-th-large"></i> Dashboard</a
+            >
+            <a href="courses.html" class="menu-item"
+              ><i class="fas fa-book"></i> My Courses</a
+            >
+            <a href="#" class="menu-item"><i class="fas fa-tasks"></i> Tasks</a>
+            <a href="#" class="menu-item"><i class="fas fa-star"></i> Grades</a>
+            <a href="#" class="menu-item"
+              ><i class="fas fa-calendar-alt"></i> Schedule</a
+            >
+            <a href="#" class="menu-item"
+              ><i class="fas fa-cog"></i> Settings</a
+            >
+          </nav>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="user-info">
+            <img
+              id="avatarImg"
+              src="https://ui-avatars.com/api/?name=Placeholder&background=random"
+              alt="User"
+            />
+            <div>
+              <p id="sidebarName" class="user-name">Loading...</p>
+              <p id="sidebarId" class="user-id">ID: --</p>
+            </div>
+          </div>
+          <i
+            class="fas fa-sign-out-alt logout-btn"
+            id="logoutBtn"
+            title="Log out"
+          ></i>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="header">
+          <h2>Dashboard</h2>
+          <div class="header-right">
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Search for courses, assignments..."
+              />
+            </div>
+            <div class="header-icons">
+              <a
+                href="javascript:void(0)"
+                class="icon-wrapper"
+                data-tooltip="Join Class"
+                onclick="toggleJoinModal()"
+              >
+                <i class="fas fa-plus-circle join-icon"></i>
+              </a>
+              <i
+                class="far fa-bell"
+                id="announcementsBell"
+                style="cursor: pointer"
+              ></i>
+              <i class="far fa-moon" id="themeToggle"></i>
+              <img
+                id="topAvatar"
+                src="https://ui-avatars.com/api/?name=Placeholder&background=E5B79B"
+                class="top-avatar"
+              />
+            </div>
+          </div>
+        </header>
+
+        <script>
+          document.getElementById("announcementsBell").onclick = function () {
+            window.location.href = "notifications.html";
+          };
+        </script>
+
+        <section class="welcome-banner">
+          <div class="banner-content">
+            <img
+              id="bannerImg"
+              src="https://ui-avatars.com/api/?name=Placeholder&background=E5B79B"
+              class="banner-img"
+            />
+            <div class="banner-text">
+              <h3 id="welcomeName">Welcome,</h3>
+              <p id="facultyText">Faculty • University</p>
+              <div class="banner-badges">
+                <span id="idBadge" class="badge">ID: --</span>
+              </div>
+            </div>
+          </div>
+          <div class="banner-circle"></div>
+        </section>
+
+        <div class="dashboard-grid">
+          <div class="left-col">
+            <div class="section-header">
+              <h4>Enrolled Classes</h4>
+              <a href="courses.html">View all</a>
+            </div>
+            <div class="classes-grid"></div>
+
+            <div class="recent-grades">
+              <div class="section-header">
+                <h4>Recent Grades</h4>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+              <table class="grades-table">
+                <thead>
+                  <tr>
+                    <th>COURSE</th>
+                    <th>ASSESSMENT</th>
+                    <th>DATE</th>
+                    <th>SCORE</th>
+                    <th>GRADE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>CS101</strong></td>
+                    <td>Midterm Exam</td>
+                    <td>Oct 15, 2023</td>
+                    <td><strong>88/100</strong></td>
+                    <td><span class="grade-tag b-plus">B+</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>MATH202</strong></td>
+                    <td>Quiz 3: Vectors</td>
+                    <td>Oct 12, 2023</td>
+                    <td><strong>10/10</strong></td>
+                    <td><span class="grade-tag a-grade">A</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="right-col">
+            <div class="side-card tasks">
+              <div class="section-header">
+                <h4>Pending Tasks</h4>
+                <i class="fas fa-plus add-task"></i>
+              </div>
+              <div class="task-item">
+                <input type="checkbox" />
+                <div class="task-info">
+                  <p>Submit Algorithm Project</p>
+                  <span class="priority high">HIGH</span>
+                  <span class="type">COURSE</span>
+                </div>
+              </div>
+              <div class="task-item">
+                <input type="checkbox" />
+                <div class="task-info">
+                  <p>Register for next semester</p>
+                  <span class="priority medium">MEDIUM</span>
+                  <span class="type">PERSONAL</span>
+                </div>
+              </div>
+              <div class="task-item">
+                <input type="checkbox" />
+                <div class="task-info">
+                  <p>Return Library Book</p>
+                  <span class="priority low">LOW</span>
+                  <span class="type">PERSONAL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="side-card attendance">
+              <h4>Attendance</h4>
+              <div class="attendance-content">
+                <div class="circular-progress">
+                  <svg width="80" height="80">
+                    <circle class="bg" cx="40" cy="40" r="35"></circle>
+                    <circle class="prog" cx="40" cy="40" r="35"></circle>
+                  </svg>
+                  <span class="percentage">92%</span>
+                </div>
+                <div class="attendance-text">
+                  <h5>Overall Attendance</h5>
+                  <p>
+                    You missed <span class="red">3 classes</span> this semester.
+                  </p>
+                  <p class="trend">📈 +2% from last month</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ─── Scripts ──────────────────────────────────────────────── -->
+
+    <!-- Dark mode toggle -->
+    <script>
+      const toggleBtn = document.getElementById("themeToggle");
+
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.classList.remove("fa-moon");
+        toggleBtn.classList.add("fa-sun");
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+          localStorage.setItem("theme", "dark");
+          toggleBtn.classList.remove("fa-moon");
+          toggleBtn.classList.add("fa-sun");
+        } else {
+          localStorage.setItem("theme", "light");
+          toggleBtn.classList.remove("fa-sun");
+          toggleBtn.classList.add("fa-moon");
+        }
+      });
+    </script>
+
+    <script src="../config.js"></script>
+
+    <!-- Load student classes -->
+    <script>
+      /**
+       * Fetches the student's enrolled classes and renders them.
+       *
+       * KEY CHANGE: the "View Details" button now calls goToClass(cls)
+       * which saves the full class object to localStorage("selectedClass")
+       * BEFORE navigating — so class.html can read it immediately.
+       */
+      async function loadStudentClasses() {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
+        try {
+          const res = await fetch(API_CONFIG.BASE_URL + "/api/classes/my", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          });
+
+          const data = await res.json();
+          const grid = document.querySelector(".classes-grid");
+          grid.innerHTML = "";
+
+          if (!res.ok || !data.classes || data.classes.length === 0) {
+            grid.innerHTML =
+              '<div style="color:#888;padding:24px;">No classes</div>';
+            return;
+          }
+
+          const bgClasses = [
+            "blue-bg", "green-bg", "orange-bg", "sky-bg",
+            "pink-bg",  "teal-bg",  "gold-bg",   "magenta-bg",
+          ];
+
+          data.classes.slice(0, 4).forEach((cls, idx) => {
+            const card = document.createElement("div");
+            card.className = "course-card";
+            const bgClass = bgClasses[idx % bgClasses.length];
+
+            card.innerHTML = `
+              <div class="card-header ${bgClass}">
+                <span>${cls.courseCode || "CLASS"}</span>
+              </div>
+              <div class="card-body">
+                <h5>${cls.name}</h5>
+                <p class="prof">${cls.instructor?.fullName ?? ""}</p>
+                ${cls.description ? `<p class="class-description">${cls.description}</p>` : ""}
+                <div class="info-row">
+                  <span><i class="fa-solid fa-calendar-days" title="Semester"></i> ${cls.semester || ""} ${cls.year || ""}</span>
+                  <span><i class="fa-solid fa-hashtag" title="Enrolled Students"></i> ${cls.students?.length ?? 0} students</span>
+                  <span><i class="fa-solid fa-key" title="Join Code"></i> ${cls.joinCode || "-"}</span>
+                </div>
+                <!-- ✅ onclick saves class to localStorage then navigates -->
+                <button class="btn-details" onclick="goToClass(${idx})">
+                  View Details
+                </button>
+              </div>
+            `;
+
+            // Store the class object on the card element so goToClass can find it
+            card.__classData = cls;
+            grid.appendChild(card);
+          });
+
+        } catch (e) {
+          document.querySelector(".classes-grid").innerHTML =
+            `<div style='color:red;padding:24px;'>Error loading classes: ${e.message}</div>`;
+        }
+      }
+
+      /**
+       * Saves the selected class to localStorage then navigates to class.html.
+       * @param {number} idx — index of the card in .classes-grid
+       */
+      function goToClass(idx) {
+        const cards = document.querySelectorAll(".classes-grid .course-card");
+        const cls = cards[idx]?.__classData;
+        if (cls) {
+          localStorage.setItem("selectedClass", JSON.stringify(cls));
+        }
+        window.location.href = "class.html";
+      }
+
+      window.addEventListener("DOMContentLoaded", loadStudentClasses);
+    </script>
+
+    <!-- Join Class modal -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const joinBtn     = document.getElementById("joinClassBtn");
+        const input       = document.getElementById("joinClassInput");
+        const responseBox = document.getElementById("joinClassResponse");
+
+        if (joinBtn && input && responseBox) {
+          joinBtn.addEventListener("click", async function (e) {
+            e.preventDefault();
+            responseBox.textContent = "";
+            const code = input.value.trim();
+
+            if (!code) {
+              responseBox.style.color = "#d32f2f";
+              responseBox.textContent = "Please enter a class ID or access code.";
+              return;
+            }
+
+            const API_URL =
+              window.API_CONFIG?.BASE_URL ?? "http://localhost:5000";
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+              responseBox.style.color = "#d32f2f";
+              responseBox.textContent = "You must be logged in.";
+              return;
+            }
+
+            joinBtn.disabled = true;
+            joinBtn.innerHTML =
+              '<span style="font-size:16px"><i class="fas fa-spinner fa-spin"></i></span> Joining...';
+
+            try {
+              const res = await fetch(`${API_URL}/api/classes/join`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ joinCode: code }),
+              });
+
+              let result = {};
+              try { result = await res.json(); } catch (_) {}
+
+              joinBtn.disabled = false;
+              joinBtn.innerHTML =
+                '<span>Join Class Now</span> <i class="fas fa-arrow-right"></i>';
+
+              if (res.ok) {
+                responseBox.style.color = "#388e3c";
+                responseBox.textContent = "Successfully joined the class!";
+                setTimeout(() => {
+                  document.getElementById("joinModal").style.display = "none";
+                  responseBox.textContent = "";
+                  window.location.reload();
+                }, 1200);
+              } else {
+                responseBox.style.color = "#d32f2f";
+                responseBox.textContent =
+                  result.message || `Failed to join class. [${res.status}]`;
+              }
+            } catch (err) {
+              joinBtn.disabled = false;
+              joinBtn.innerHTML =
+                '<span>Join Class Now</span> <i class="fas fa-arrow-right"></i>';
+              responseBox.style.color = "#d32f2f";
+              responseBox.textContent = "Network error. Please try again.";
+            }
+          });
+        }
+      });
+    </script>
+
+    <!-- Auth guard + user populate -->
+    <script>
+      // Accept token/user from URL (after email verification)
+      (function handleUrlLogin() {
+        try {
+          const params      = new URLSearchParams(window.location.search);
+          const token       = params.get("token");
+          const userEncoded = params.get("user");
+          if (token && userEncoded) {
+            try {
+              const decoded = decodeURIComponent(userEncoded);
+              const user    = JSON.parse(atob(decoded));
+              localStorage.setItem("token", token);
+              localStorage.setItem("user", JSON.stringify(user));
+              history.replaceState({}, document.title, window.location.pathname);
+            } catch (e) {
+              console.warn("failed to parse user from url", e.message);
+            }
+          }
+        } catch (e) {}
+      })();
+
+      // Guard: must be logged-in student
+      (function guard() {
+        const token   = localStorage.getItem("token");
+        const userJson = localStorage.getItem("user");
+
+        if (!token || !userJson) {
+          window.location.href = "signin.html";
+          return;
+        }
+
+        try {
+          const user = JSON.parse(userJson);
+
+          if (user.role !== "student") {
+            window.location.href =
+              user.role === "instructor" ? "instructor-profile.html" : "signin.html";
+            return;
+          }
+
+          // Verify token with backend
+          fetch(API_CONFIG.BASE_URL + "/api/auth/me", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => {
+              if (!res.ok) throw new Error("Token verification failed");
+              return res.json();
+            })
+            .then((data) => {
+              localStorage.setItem("user", JSON.stringify(data.user));
+            })
+            .catch((err) => {
+              console.warn("Token verification failed:", err.message);
+              localStorage.removeItem("token");
+              localStorage.removeItem("user");
+              window.location.href = "signin.html";
+            });
+
+        } catch {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          window.location.href = "signin.html";
+        }
+      })();
+
+      // Populate dynamic user data
+      (function populateUser() {
+        const userJson = localStorage.getItem("user");
+        if (!userJson) return;
+        try {
+          const user       = JSON.parse(userJson);
+          const name       = user.fullName || "";
+          const id         = user.studentId || user.id || "--";
+          const faculty    = user.college   || "";
+          const university = user.university || "";
+
+          document.getElementById("sidebarName").textContent = name;
+          document.getElementById("sidebarId").textContent   = `ID: ${id}`;
+
+          const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random`;
+          document.getElementById("avatarImg").src  = avatarUrl;
+          document.getElementById("topAvatar").src  = avatarUrl.replace("background=random", "background=E5B79B");
+          document.getElementById("bannerImg").src  = avatarUrl.replace("background=random", "background=E5B79B");
+
+          document.getElementById("welcomeName").textContent = name;
+          document.getElementById("facultyText").textContent =
+            faculty && university ? `${faculty} • ${university}` : university || faculty;
+          document.getElementById("idBadge").textContent = `ID: ${id}`;
+
+        } catch (e) {
+          console.error("Failed to parse user data:", e);
+        }
+      })();
+
+      // Logout
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.href = "signin.html";
+      });
+    </script>
+
+    <!-- Join modal toggle -->
+    <script>
+      function toggleJoinModal() {
+        const modal      = document.getElementById("joinModal");
+        const inputField = modal.querySelector(".material-input");
+        const isHidden   = modal.style.display === "none" || modal.style.display === "";
+
+        if (isHidden) {
+          if (inputField) inputField.value = "";
+          modal.style.display = "flex";
+        } else {
+          modal.style.display = "none";
+        }
+      }
+
+      window.onclick = function (event) {
+        const modal = document.getElementById("joinModal");
+        if (event.target === modal) toggleJoinModal();
+      };
+    </script>
+
+    <!-- Join Class Modal -->
+    <div id="joinModal" class="modal-window-overlay" style="display: none">
+      <div class="modal-card">
+        <button onclick="toggleJoinModal()" class="material-close-btn">&times;</button>
+        <div class="modal-card-content">
+          <div class="material-icon-container">
+            <i class="fas fa-plus-square"></i>
+          </div>
+          <h2 class="material-title">Join Class</h2>
+          <p class="material-subtitle">Enter your class ID or access code to join</p>
+          <div class="material-input-group">
+            <label>Class Identification</label>
+            <input
+              type="text"
+              placeholder="Enter Class ID (e.g. BB6410)"
+              class="material-input"
+              id="joinClassInput"
+            />
+          </div>
+          <button class="material-join-btn" id="joinClassBtn">
+            <span>Join Class Now</span> <i class="fas fa-arrow-right"></i>
+          </button>
+          <div id="joinClassResponse" style="margin-top: 10px; font-size: 14px"></div>
+          <p class="material-footer-text">
+            Having trouble? Contact your Instructor for the course access code.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
