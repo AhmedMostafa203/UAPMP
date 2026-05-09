@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UAPMP | Smart Education</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Background -->
+    <div class="bg-scene"></div>
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <a href="#" class="nav-logo">
+          <div class="nav-logo-icon">
+            <svg
+              fill="none"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+          <div class="nav-logo-text">
+            <h1>UAPMP</h1>
+            <span>Smart Education</span>
+          </div>
+        </a>
+
+        <!-- Links -->
+        <ul class="nav-links">
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- CTA Buttons -->
+        <div class="nav-cta">
+          <a href="/html/signin.html" class="nav-btn-ghost">
+            <i
+              class="fa-solid fa-right-to-bracket"
+              style="margin-right: 6px; font-size: 13px"
+            ></i
+            >Log In
+          </a>
+          <a href="/html/signup.html" class="nav-btn-primary">
+            <i
+              class="fa-solid fa-user-plus"
+              style="margin-right: 6px; font-size: 13px"
+            ></i
+            >Sign Up
+          </a>
+        </div>
+
+        <!-- Hamburger (Mobile) -->
+        <div class="nav-hamburger" id="hamburger" onclick="toggleMobile()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#hero" onclick="toggleMobile()">Home</a></li>
+        <li><a href="#features" onclick="toggleMobile()">Features</a></li>
+        <li><a href="#team" onclick="toggleMobile()">Team</a></li>
+        <li><a href="#contact" onclick="toggleMobile()">Contact</a></li>
+      </ul>
+      <div class="mobile-menu-btns">
+        <a href="/html/signin.html" class="m-ghost"
+          ><i class="fa-solid fa-right-to-bracket" style="margin-right: 6px"></i
+          >Log In</a
+        >
+        <a href="/html/signup.html" class="m-primary"
+          ><i class="fa-solid fa-user-plus" style="margin-right: 6px"></i>Sign
+          Up</a
+        >
+      </div>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+      <div class="particles" id="particles"></div>
+
+      <div>
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          The Future of Learning
+        </div>
+
+        <h1>
+          <span class="line-1">Elevate Your</span>
+          <span class="line-2">Academic Journey</span>
+        </h1>
+
+        <p class="hero-desc">
+          UAPMP is a next-generation smart educational platform designed to
+          connect minds, organize workflows, and unlock your ultimate student
+          potential.
+        </p>
+
+        <div class="hero-actions">
+          <a href="signup.html" class="btn-primary">
+            <i class="fa-solid fa-user-plus"></i> Get Started Free
+          </a>
+          <a href="#features" class="btn-secondary">
+            <i class="fa-solid fa-play" style="font-size: 12px"></i> See How It
+            Works
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">10K<span>+</span></div>
+            <div class="stat-label">Active Students</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">98<span>%</span></div>
+            <div class="stat-label">Satisfaction Rate</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">500<span>+</span></div>
+            <div class="stat-label">Courses Available</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="section" id="features">
+      <div class="section-inner">
+        <div class="section-header center reveal">
+          <div class="section-tag">
+            <i class="fa-solid fa-sparkles"></i> Why UAPMP
+          </div>
+          <h2 class="section-title">
+            Built for Modern
+            <span style="color: var(--primary)">Education</span>
+          </h2>
+          <p class="section-subtitle">
+            Discover the powerful features that make our platform stand out and
+            redefine how students and educators connect.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card reveal reveal-delay-1">
+            <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Lightning Fast</h3>
+            <p>
+              Zero-lag experience with highly optimized servers ensuring
+              students and educators are always connected seamlessly and in real
+              time.
+            </p>
+          </div>
+          <div class="feature-card accent-purple reveal reveal-delay-2">
+            <div class="feature-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3>Bank-Grade Security</h3>
+            <p>
+              Academic data, assignments, and personal information are encrypted
+              with military-grade protocols and heavily guarded 24/7.
+            </p>
+          </div>
+          <div class="feature-card accent-green reveal reveal-delay-3">
+            <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>AI-Powered Insights</h3>
+            <p>
+              Track progress with smart analytics that automatically highlight
+              strengths and areas for improvement with actionable feedback.
+            </p>
+          </div>
+          <div class="feature-card accent-green reveal reveal-delay-1">
+            <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
+            <h3>Collaborative Spaces</h3>
+            <p>
+              Real-time collaboration tools for group projects, peer reviews,
+              and live classroom discussions, all in one unified platform.
+            </p>
+          </div>
+          <div class="feature-card reveal reveal-delay-2">
+            <div class="feature-icon">
+              <i class="fa-solid fa-mobile-screen"></i>
+            </div>
+            <h3>Mobile First</h3>
+            <p>
+              Fully responsive across all devices. Access your courses,
+              assignments, and grades from any smartphone, tablet, or desktop.
+            </p>
+          </div>
+          <div class="feature-card accent-purple reveal reveal-delay-3">
+            <div class="feature-icon">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3>Smart Analytics</h3>
+            <p>
+              Deep performance dashboards for students and instructors.
+              Visualize learning paths and identify trends before they become
+              problems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TEAM ========== -->
+    <section class="section team-section" id="team">
+      <div class="section-inner">
+        <div class="section-header center reveal">
+          <div class="section-tag">
+            <i class="fa-solid fa-code"></i> The Builders
+          </div>
+          <h2 class="section-title">
+            Meet The <span style="color: var(--primary)">Developers</span>
+          </h2>
+          <p class="section-subtitle">
+            The brilliant minds and engineers who designed and built the UAPMP
+            platform from scratch.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-card reveal reveal-delay-1">
+            <div class="dev-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Hammad+Ahmed&background=00e5ff&color=040d1a&size=150&bold=true"
+                alt="Hammad Ahmed"
+              />
+            </div>
+            <h3>Hammad Ahmed</h3>
+            <span class="dev-role">Team Leader & UI/UX</span>
+            <p>
+              Led the project vision, structured the core system architecture,
+              and managed the full team workflow.
+            </p>
+            <div class="social-links">
+              <a href="#" target="_blank"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a href="#" target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-2">
+            <div class="dev-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Ahmed+Mostafa&background=0052cc&color=fff&size=150&bold=true"
+                alt="Ahmed Mostafa"
+              />
+            </div>
+            <h3>Ahmed Mostafa</h3>
+            <span class="dev-role">Backend Engineer</span>
+            <p>
+              Architected the entire backend infrastructure, defined the system
+              design, and silently drove every core process from database
+              modeling to deployment.
+            </p>
+            <div class="social-links">
+              <a href="https://github.com/AhmedMostafa203" target="_blank"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/ahmad-mustafa-0149533a0?trk=contact-info"
+                target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-3">
+            <div class="dev-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Omar+Mohamed&background=36B37E&color=fff&size=150&bold=true"
+                alt="Omar Mohamed"
+              />
+            </div>
+            <h3>Omar Mohamed</h3>
+            <span class="dev-role">Frontend Developer</span>
+            <p>
+              Translated designs into this interactive, cinematic UI experience
+              using cutting-edge web technologies.
+            </p>
+            <div class="social-links">
+              <a href="#" target="_blank"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a href="#" target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-1">
+            <div class="dev-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Shady+Ali&background=FF5630&color=fff&size=150&bold=true"
+                alt="Shady Ali"
+              />
+            </div>
+            <h3>Shady Ali</h3>
+            <span class="dev-role">Frontend Developer</span>
+            <p>
+              Crafted pixel-perfect components, designed the database schema,
+              and secured all user data flows.
+            </p>
+            <div class="social-links">
+              <a href="#" target="_blank"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a href="#" target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-2">
+            <div class="dev-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Mahmoud+Emam&background=6554C0&color=fff&size=150&bold=true"
+                alt="Mahmoud Emam"
+              />
+            </div>
+            <h3>Mahmoud Emam</h3>
+            <span class="dev-role">Backend Engineer</span>
+            <p>
+              Crafted user journeys, wireframes, and the overall visual
+              identity. Built the auth and session systems.
+            </p>
+            <div class="social-links">
+              <a href="#" target="_blank"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a href="#" target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="team-card reveal reveal-delay-3">
+            <div class="dev-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Ahmed+Alaa&background=FFAB00&color=040d1a&size=150&bold=true"
+                alt="Ahmed Alaa"
+              />
+            </div>
+            <h3>Ahmed Alaa</h3>
+            <span class="dev-role">App Developer</span>
+            <p>
+              Ensured the system is bug-free, secure, and performs flawlessly
+              under heavy concurrent load.
+            </p>
+            <div class="social-links">
+              <a href="#" target="_blank"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a href="#" target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer id="contact">
+      <div class="footer-inner">
+        <p class="footer-copy">
+          &copy; 2024 UAPMP Project. Developed with
+          <i class="fa-solid fa-heart"></i> for Academic Excellence.
+        </p>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+      // ---- Navbar: scroll glass effect ----
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 20);
+        updateActiveLink();
+      });
+
+      // ---- Navbar: active link highlight on scroll ----
+      function updateActiveLink() {
+        const sections = document.querySelectorAll("section[id], footer[id]");
+        const links = document.querySelectorAll(".nav-links a");
+        let current = "";
+        sections.forEach((s) => {
+          if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        links.forEach((l) => {
+          l.classList.remove("active");
+          if (l.getAttribute("href") === "#" + current)
+            l.classList.add("active");
+        });
+      }
+
+      // ---- Mobile menu toggle ----
+      function toggleMobile() {
+        document.getElementById("hamburger").classList.toggle("open");
+        document.getElementById("mobileMenu").classList.toggle("open");
+      }
+
+      // ---- Scroll reveal (IntersectionObserver) ----
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          }),
+        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // ---- Floating particles (hero) ----
+      const particleContainer = document.getElementById("particles");
+      for (let i = 0; i < 18; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+        const size = Math.random() * 4 + 2;
+        p.style.cssText = `
+          width: ${size}px;
+          height: ${size}px;
+          left: ${Math.random() * 100}%;
+          animation-duration: ${Math.random() * 15 + 10}s;
+          animation-delay: ${Math.random() * 10}s;
+        `;
+        particleContainer.appendChild(p);
+      }
+
+      // ---- Smooth scroll for in-page anchor links ----
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        const href = a.getAttribute("href");
+        if (href.length > 1 && !href.includes(".html")) {
+          a.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target)
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
