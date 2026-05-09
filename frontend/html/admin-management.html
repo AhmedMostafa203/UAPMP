@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Management - UAPMP</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/admin-managment.css" />
+    <link rel="stylesheet" href="../css/admin-profile.css" />
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <!-- ─── SIDEBAR ────────────────────────────────────────────────────────── -->
+      <aside class="sidebar">
+        <div class="sidebar-logo">
+          <div class="sidebar-logo-icon">
+            <svg
+              fill="none"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+          <div class="sidebar-logo-text">
+            <h1>UAPMP</h1>
+            <p>Admin Console</p>
+          </div>
+        </div>
+
+       <nav class="sidebar-nav">
+          <a class="nav-link" href="admin-profile.html">
+            <span class="material-symbols-outlined">dashboard</span>
+            Dashboard
+          </a>
+          <a class="nav-link active" href="admin-management.html">
+            <span class="material-symbols-outlined">admin_panel_settings</span>
+            Management
+          </a>
+          <a class="nav-link" href="admin-announcements.html">
+            <span class="material-symbols-outlined">campaign</span>
+            Announcements
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <a class="logout-link" href="#" id="logoutBtn">
+            <span class="material-symbols-outlined">logout</span>
+            Logout
+          </a>
+        </div>
+      </aside>
+
+      <!-- ─── MAIN ───────────────────────────────────────────────────────────── -->
+      <main class="main">
+        <!-- Header (from file 3 — untouched) -->
+        <header class="header">
+          <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+    <span class="material-symbols-outlined">menu</span>
+</button>
+          <div class="search-wrap">
+            <span class="material-symbols-outlined">search</span>
+            <input placeholder="Search..." type="text" />
+          </div>
+          <div class="header-right">
+            <button class="theme-btn" id="themeToggle" title="Toggle dark mode">
+              <span class="material-symbols-outlined" id="themeIcon"
+                >dark_mode</span
+              >
+            </button>
+            <div class="admin-info">
+              <div class="admin-info-text">
+                <p class="name" id="welcomeName">Loading...</p>
+                <p class="role" id="userRoleBadge">Admin</p>
+              </div>
+              <img
+                alt="Admin Profile"
+                class="admin-avatar"
+                id="avatarImg"
+                src="https://ui-avatars.com/api/?name=Admin&background=random"
+              />
+            </div>
+          </div>
+        </header>
+
+        <!-- Dashboard Body -->
+        <div class="dashboard-body">
+          <!-- Page intro (control-room style) -->
+          <div class="page-intro">
+            <h1>Admin Management</h1>
+            <p>
+              Manage and monitor all users and classroom sessions across the
+              enterprise.
+            </p>
+          </div>
+
+          <!-- Tabs (file 3 — untouched) -->
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="users">
+              <span class="material-symbols-outlined">group</span>
+              Users Management
+            </button>
+            <button class="tab-btn" data-tab="classes">
+              <span class="material-symbols-outlined">menu_book</span>
+              Classes Management
+            </button>
+          </div>
+
+          <!-- ── USERS TAB ─────────────────────────────────────────────────── -->
+          <div class="tab-content active" id="users-tab">
+            <div class="management-header">
+              <div class="search-wrap-inline">
+                <span class="s-icon">🔍</span>
+                <input
+                  type="text"
+                  id="usersSearch"
+                  placeholder="Search by name, email, or ID..."
+                />
+              </div>
+              <select id="roleFilter" class="role-select">
+                <option value="">All Roles</option>
+                <option value="student">Students</option>
+                <option value="instructor">Instructors</option>
+                <option value="admin">Admins</option>
+                <option value="super_admin">Super Admin</option>
+              </select>
+            </div>
+
+            <div id="usersContainer">
+              <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading users...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── CLASSES TAB ────────────────────────────────────────────────── -->
+          <div class="tab-content" id="classes-tab">
+            <div class="management-header">
+              <div class="search-wrap-inline">
+                <span class="s-icon">🔍</span>
+                <input
+                  type="text"
+                  id="classesSearch"
+                  placeholder="Search by classroom name or code..."
+                />
+              </div>
+            </div>
+
+            <div id="classesContainer">
+              <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading classes...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /dashboard-body -->
+      </main>
+    </div>
+    <!-- /app-wrapper -->
+     <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <!-- ─── STUDENTS VIEW MODAL ────────────────────────────────────────────── -->
+    <div class="modal" id="studentsModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="studentsModalTitle">Class Students</h3>
+          <button class="modal-close" onclick="closeStudentsModal()">✕</button>
+        </div>
+        <div id="studentsModalBody">
+          <div class="loading">
+            <div class="spinner"></div>
+            <p>Loading students...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── DELETE CONFIRMATION MODAL (control-room style) ────────────────── -->
+    <div id="deleteModal" class="modal-overlay-confirm">
+      <div class="modal-box">
+        <div class="modal-icon">⚠️</div>
+        <h2>Are you sure?</h2>
+        <p id="deleteModalText">
+          This action cannot be undone. This item and all its data will be
+          permanently deleted.
+        </p>
+        <div class="modal-actions">
+          <button class="btn-modal-cancel" id="cancelDeleteBtn">Cancel</button>
+          <button class="btn-modal-confirm" id="confirmDeleteBtn">
+            Yes, Delete it
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+      // ─── AUTH GUARD ────────────────────────────────────────────────────────
+      (function guard() {
+        const token = localStorage.getItem("token");
+        const userJson = localStorage.getItem("user");
+        if (!token || !userJson) {
+          window.location.href = "signin.html";
+          return;
+        }
+        try {
+          const user = JSON.parse(userJson);
+          if (user.role !== "admin" && user.role !== "super_admin")
+            window.location.href = "signin.html";
+        } catch {
+          window.location.href = "signin.html";
+        }
+      })();
+
+      // ─── LOAD USER DATA ────────────────────────────────────────────────────
+      (function loadUserData() {
+        const userJson = localStorage.getItem("user");
+        if (!userJson) return;
+        try {
+          const user = JSON.parse(userJson);
+          const name = user.fullName || "Admin";
+          const role = user.role || "admin";
+          document.getElementById("welcomeName").textContent = name;
+          document.getElementById("userRoleBadge").textContent = role
+            .replace("_", " ")
+            .toUpperCase();
+          document.getElementById("avatarImg").src =
+            `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random`;
+        } catch (e) {
+          console.error("Failed to parse user data:", e);
+        }
+      })();
+
+      // ─── LOGOUT ────────────────────────────────────────────────────────────
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("logoutBtn")
+          ?.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            window.location.href = "signin.html";
+          });
+      });
+
+      // ─── DARK MODE ─────────────────────────────────────────────────────────
+      const themeToggle = document.getElementById("themeToggle");
+      const themeIcon = document.getElementById("themeIcon");
+      function applyTheme(dark) {
+        if (dark) {
+          document.body.classList.add("dark");
+          themeIcon.textContent = "light_mode";
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.body.classList.remove("dark");
+          themeIcon.textContent = "dark_mode";
+          localStorage.setItem("theme", "light");
+        }
+      }
+      applyTheme(localStorage.getItem("theme") === "dark");
+      themeToggle.addEventListener("click", () =>
+        applyTheme(!document.body.classList.contains("dark")),
+      );
+
+      // ─── TAB SWITCHING ─────────────────────────────────────────────────────
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const tab = this.dataset.tab;
+          document
+            .querySelectorAll(".tab-btn")
+            .forEach((b) => b.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-content")
+            .forEach((c) => c.classList.remove("active"));
+          this.classList.add("active");
+          document.getElementById(`${tab}-tab`).classList.add("active");
+          if (tab === "users") loadUsers();
+          if (tab === "classes") loadClasses();
+        });
+      });
+
+      // ─── AUTH HEADERS ──────────────────────────────────────────────────────
+      function getAuthHeaders() {
+        return {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        };
+      }
+
+      // ─── DELETE MODAL ──────────────────────────────────────────────────────
+      let pendingDeleteFn = null;
+      const deleteModal = document.getElementById("deleteModal");
+
+      document.getElementById("cancelDeleteBtn").onclick = function () {
+        deleteModal.classList.remove("active");
+        pendingDeleteFn = null;
+      };
+      document.getElementById("confirmDeleteBtn").onclick = function () {
+        deleteModal.classList.remove("active");
+        if (pendingDeleteFn) {
+          pendingDeleteFn();
+          pendingDeleteFn = null;
+        }
+      };
+      deleteModal.addEventListener("click", function (e) {
+        if (e.target === this) {
+          this.classList.remove("active");
+          pendingDeleteFn = null;
+        }
+      });
+
+      function openDeleteModal(message, onConfirm) {
+        document.getElementById("deleteModalText").textContent = message;
+        pendingDeleteFn = onConfirm;
+        deleteModal.classList.add("active");
+      }
+
+      // ─── AVATAR HELPERS ────────────────────────────────────────────────────
+      const COLOURS = [
+        "circle-teal",
+        "circle-purple",
+        "circle-blue",
+        "circle-green",
+        "circle-orange",
+        "circle-indigo",
+        "circle-red",
+      ];
+
+      function initials(name) {
+        return (name || "?")
+          .split(" ")
+          .map((w) => w[0])
+          .join("")
+          .slice(0, 2)
+          .toUpperCase();
+      }
+
+      // ─── USERS MANAGEMENT ──────────────────────────────────────────────────
+      let usersPage = 1,
+        usersSearch = "",
+        usersRole = "";
+
+      async function loadUsers() {
+        const container = document.getElementById("usersContainer");
+        container.innerHTML =
+          '<div class="loading"><div class="spinner"></div><p>Loading users...</p></div>';
+        try {
+          const params = new URLSearchParams({
+            page: usersPage,
+            limit: 20,
+            search: usersSearch,
+            role: usersRole,
+          });
+          const res = await fetch(
+            `${API_CONFIG.BASE_URL}/api/admin/users?${params}`,
+            { headers: getAuthHeaders() },
+          );
+          if (!res.ok) throw new Error("Failed to fetch users");
+          renderUsers(await res.json());
+        } catch (err) {
+          container.innerHTML = `<div class="alert alert-error">Failed to load users: ${err.message}</div>`;
+        }
+      }
+
+      function renderUsers({ users, pagination }) {
+        const container = document.getElementById("usersContainer");
+        if (!users || !users.length) {
+          container.innerHTML =
+            '<div class="empty-state"><div class="empty-state-icon">👤</div><p>No users found</p></div>';
+          return;
+        }
+
+        let rows = users
+          .map(
+            (user, i) => `
+        <tr>
+          <td>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div class="avatar ${COLOURS[i % COLOURS.length]}" style="width:34px;height:34px;font-size:12px;">
+                ${initials(user.fullName)}
+              </div>
+              <span class="class-name">${user.fullName}</span>
+            </div>
+          </td>
+          <td style="color:#6b7280;font-size:14px;">${user.email}</td>
+          <td><span class="badge badge-${user.role}">${user.role}</span></td>
+          <td class="class-code">${user.studentId || "—"}</td>
+          <td class="actions-cell">
+            <button class="btn-delete"
+              onclick="openDeleteModal(
+                'This action cannot be undone. \\'${user.fullName.replace(/'/g, "\\\\'")}\\' and all their data will be permanently deleted.',
+                () => deleteUser('${user._id}')
+              )">
+              <span class="material-symbols-outlined" style="font-size:14px;">delete</span>
+              DELETE
+            </button>
+          </td>
+        </tr>
+      `,
+          )
+          .join("");
+
+        container.innerHTML = `
+        <div class="data-table-section">
+          <table class="control-table">
+            <thead>
+              <tr>
+                <th>Name</th><th>Email</th><th>Role</th><th>Student ID</th>
+                <th class="actions-header">Actions</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+        <div class="table-footer">
+          <div>Showing ${users.length} of ${pagination.totalItems || "?"} total users</div>
+          <div class="system-status"><span class="status-dot">●</span> System Online: Live Data Stream</div>
+        </div>
+        <div class="pagination">
+          <button class="pagination-btn" ${pagination.currentPage <= 1 ? "disabled" : ""} onclick="prevUsersPage()">← Previous</button>
+          <span class="pagination-info">Page ${pagination.currentPage} of ${pagination.totalPages}</span>
+          <button class="pagination-btn" ${pagination.currentPage >= pagination.totalPages ? "disabled" : ""} onclick="nextUsersPage()">Next →</button>
+        </div>`;
+      }
+
+      async function deleteUser(userId) {
+        try {
+          const res = await fetch(
+            `${API_CONFIG.BASE_URL}/api/admin/users/${userId}`,
+            { method: "DELETE", headers: getAuthHeaders() },
+          );
+          const data = await res.json();
+          if (data.success) loadUsers();
+          else alert(`Error: ${data.message}`);
+        } catch {
+          alert("Failed to delete user");
+        }
+      }
+
+      function prevUsersPage() {
+        if (usersPage > 1) {
+          usersPage--;
+          loadUsers();
+        }
+      }
+      function nextUsersPage() {
+        usersPage++;
+        loadUsers();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("usersSearch")
+          .addEventListener("input", function () {
+            usersSearch = this.value;
+            usersPage = 1;
+            loadUsers();
+          });
+        document
+          .getElementById("roleFilter")
+          .addEventListener("change", function () {
+            usersRole = this.value;
+            usersPage = 1;
+            loadUsers();
+          });
+      });
+
+      // ─── CLASSES MANAGEMENT ────────────────────────────────────────────────
+      let classesPage = 1,
+        classesSearch = "";
+
+      async function loadClasses() {
+        const container = document.getElementById("classesContainer");
+        container.innerHTML =
+          '<div class="loading"><div class="spinner"></div><p>Loading classes...</p></div>';
+        try {
+          const params = new URLSearchParams({
+            page: classesPage,
+            limit: 20,
+            search: classesSearch,
+          });
+          const res = await fetch(
+            `${API_CONFIG.BASE_URL}/api/admin/classes?${params}`,
+            { headers: getAuthHeaders() },
+          );
+          if (!res.ok) throw new Error("Failed to fetch classes");
+          renderClasses(await res.json());
+        } catch (err) {
+          container.innerHTML = `<div class="alert alert-error">Failed to load classes: ${err.message}</div>`;
+        }
+      }
+
+      function renderClasses({ classes, pagination }) {
+        const container = document.getElementById("classesContainer");
+        if (!classes || !classes.length) {
+          container.innerHTML =
+            '<div class="empty-state"><div class="empty-state-icon">📚</div><p>No classes found</p></div>';
+          return;
+        }
+
+        let rows = classes
+          .map(
+            (cls) => `
+        <tr>
+          <td class="class-name">${cls.name}</td>
+          <td class="class-code">${cls.courseCode}</td>
+          <td style="color:#374151;">${cls.instructor ? cls.instructor.fullName : "—"}</td>
+          <td style="color:#6b7280;font-size:14px;">${cls.studentCount}</td>
+          <td><span class="join-code">${cls.joinCode}</span></td>
+          <td class="actions-cell">
+            <button class="btn-view" onclick="viewStudents('${cls._id}', '${cls.name.replace(/'/g, "\\'")}')">
+              VIEW
+            </button>
+            <button class="btn-delete"
+              onclick="openDeleteModal(
+                'This action cannot be undone. \\'${cls.name.replace(/'/g, "\\\\'")}\\' and all its data will be permanently deleted.',
+                () => deleteClass('${cls._id}')
+              )">
+              DELETE
+            </button>
+          </td>
+        </tr>
+      `,
+          )
+          .join("");
+
+        container.innerHTML = `
+        <div class="data-table-section">
+          <table class="control-table">
+            <thead>
+              <tr>
+                <th>Classroom Name</th><th>Classroom Code</th><th>Instructor's Name</th>
+                <th>Students</th><th>Join Code</th><th class="actions-header">Actions</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+        <div class="table-footer">
+          <div>Showing ${classes.length} of ${pagination.totalItems || "?"} total classrooms</div>
+          <div class="system-status"><span class="status-dot">●</span> System Online: Live Data Stream</div>
+        </div>
+        <div class="pagination">
+          <button class="pagination-btn" ${pagination.currentPage <= 1 ? "disabled" : ""} onclick="prevClassesPage()">← Previous</button>
+          <span class="pagination-info">Page ${pagination.currentPage} of ${pagination.totalPages}</span>
+          <button class="pagination-btn" ${pagination.currentPage >= pagination.totalPages ? "disabled" : ""} onclick="nextClassesPage()">Next →</button>
+        </div>`;
+      }
+
+      async function deleteClass(classId) {
+        try {
+          const res = await fetch(
+            `${API_CONFIG.BASE_URL}/api/admin/classes/${classId}`,
+            { method: "DELETE", headers: getAuthHeaders() },
+          );
+          const data = await res.json();
+          if (data.success) loadClasses();
+          else alert(`Error: ${data.message}`);
+        } catch {
+          alert("Failed to delete class");
+        }
+      }
+
+      function prevClassesPage() {
+        if (classesPage > 1) {
+          classesPage--;
+          loadClasses();
+        }
+      }
+      function nextClassesPage() {
+        classesPage++;
+        loadClasses();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("classesSearch")
+          .addEventListener("input", function () {
+            classesSearch = this.value;
+            classesPage = 1;
+            loadClasses();
+          });
+        document
+          .getElementById("studentsModal")
+          .addEventListener("click", function (e) {
+            if (e.target === this) closeStudentsModal();
+          });
+      });
+
+      // ─── VIEW STUDENTS MODAL ───────────────────────────────────────────────
+      async function viewStudents(classId, className) {
+        const modal = document.getElementById("studentsModal");
+        const body = document.getElementById("studentsModalBody");
+        document.getElementById("studentsModalTitle").textContent =
+          `${className} — Students`;
+        body.innerHTML =
+          '<div class="loading"><div class="spinner"></div><p>Loading students...</p></div>';
+        modal.classList.add("active");
+        try {
+          const res = await fetch(
+            `${API_CONFIG.BASE_URL}/api/admin/classes/${classId}/students?page=1&sort=fullName`,
+            { headers: getAuthHeaders() },
+          );
+          if (!res.ok) throw new Error("Failed to fetch students");
+          renderStudentsModal(await res.json());
+        } catch (err) {
+          body.innerHTML = `<div class="alert alert-error">Failed to load students: ${err.message}</div>`;
+        }
+      }
+
+      function renderStudentsModal({ students, totalStudents, instructor }) {
+        const body = document.getElementById("studentsModalBody");
+        let html = "";
+
+        // Instructor card (delete-member style)
+        if (instructor) {
+          html += `
+          <div class="instructor-card">
+            <div class="instructor-info">
+              <div class="doctor-avatar-yellow" style="width:52px;height:52px;font-size:15px;">
+                ${initials(instructor.fullName)}
+              </div>
+              <div>
+                <div class="doctor-name" style="font-size:17px;">${instructor.fullName}</div>
+                <div class="instructor-role">${instructor.email}</div>
+              </div>
+            </div>
+            <button class="btn-remove-doctor"
+              onclick="openDeleteModal(
+                'Are you sure you want to remove ${instructor.fullName.replace(/'/g, "\\'")} as instructor? All their classes and data will be affected.',
+                () => { deleteUser('${instructor._id}'); closeStudentsModal(); }
+              )">
+               Remove
+            </button>
+          </div>`;
+        }
+
+        // Student roster (delete-member style)
+        html += `
+        <div class="roster-section">
+          <div class="roster-header">
+            <div class="title-group"><span>🎓</span><span>Enrolled Students</span></div>
+            <span class="capacity-tag">TOTAL: ${totalStudents}</span>
+          </div>
+          <div>
+            <div class="table-header-row">
+              <span>Student Name</span>
+              <span>Student ID</span>
+              <span style="text-align:right">Action</span>
+            </div>`;
+
+        if (!students || !students.length) {
+          html += `<p style="text-align:center;padding:2rem;color:#6b7280;">No students enrolled in this class</p>`;
+        } else {
+          students.forEach((s, i) => {
+            html += `
+            <div class="student-row">
+              <div class="student-main">
+                <div class="avatar ${COLOURS[i % COLOURS.length]}">${initials(s.fullName)}</div>
+                <span class="student-name">${s.fullName}</span>
+              </div>
+              <span class="student-id-badge">${s.studentId || s.email}</span>
+              <div class="student-meta">
+                <button class="btn-delete-row"
+                  onclick="openDeleteModal(
+                    'Are you sure you want to remove ${s.fullName.replace(/'/g, "\\'")} from this class?',
+                    () => deleteUser('${s._id}')
+                  )">remove</button>
+              </div>
+            </div>`;
+          });
+        }
+
+        html += `
+          </div>
+          <div class="roster-footer">END OF ACTIVE STUDENT ROSTER</div>
+        </div>`;
+
+        body.innerHTML = html;
+      }
+
+      function closeStudentsModal() {
+        document.getElementById("studentsModal").classList.remove("active");
+      }
+
+      // ─── INITIAL LOAD ──────────────────────────────────────────────────────
+      document.addEventListener("DOMContentLoaded", () => loadUsers());
+    </script>
+    <script>
+    function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('open');
+        document.getElementById('sidebarOverlay').classList.toggle('active');
+    }
+    function closeSidebar() {
+        document.querySelector('.sidebar').classList.remove('open');
+        document.getElementById('sidebarOverlay').classList.remove('active');
+    }
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) closeSidebar();
+        });
+    });
+</script>
+  </body>
+</html>
