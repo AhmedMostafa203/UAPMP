@@ -75,7 +75,15 @@ Try the platform instantly: [https://university-academic-productivity-mana-ahmed
 | **Instructor** | Manage classes, materials, assignments, attendance  |
 | **Student**    | View classes, submit assignments, track attendance  |
 
----
+
+## 🧪 Test Accounts
+
+Use the following test accounts to log in:
+
+| Role        | Email                              | Password   |
+|-------------|------------------------------------|------------|
+| Student     | 202327132@std.sci.cu.edu.eg        | 123456@a   |
+| Instructor  | hayad@sci.cu.edu.eg                | 123456@a   |
 
 ## 📁 Folder Structure
 
@@ -104,7 +112,7 @@ config/       # Configuration files
 | Name               | Role & Contribution                                                                                                                                                   | Socials                                                                                                                                                                                                                                                                                                  |
 | **Ahmed Mostafa**  | **Backend Architect**<br>Architected the entire backend infrastructure, defined the system design, and drove every core process from database modeling to deployment. | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/AhmedMostafa203) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ahmed-mostafa-abdulrahman-0149533a0) |
 | **Omar Mohamed**   | **Frontend Developer**<br>Translated designs into this interactive, cinematic UI experience using cutting-edge web technologies.                                      | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/omarmohamed) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/omarmohamed)                                 |
-| **Mohamed Hammad** | **Team Leader & UI/UX**<br>Led the project vision, structured the core system architecture, and managed the full team workflow.                                       | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/hammadahmed) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/hammadahmed)                                 |
+| **Hammad Ahmed** | **Team Leader & UI/UX**<br>Led the project vision, structured the core system architecture, and managed the full team workflow.                                       | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/hammadahmed) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/hammadahmed)                                 |
 | **Mahmoud Emam**   | **Backend Engineer**<br>Crafted user journeys, wireframes, and the overall visual identity. Built the auth and session systems.                                       | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/mahmoudemam) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/mahmoudemam)                                 |
 | **Ahmed Alaa**     | **App Developer**<br>Ensured the system is bug-free, secure, and performs flawlessly under heavy concurrent load.                                                     | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/ahmedalaa) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/ahmedalaa)                                     |
 | **Shady Ali**      | **Frontend Developer**<br>Crafted pixel-perfect components, designed the database schema, and secured all user data flows.                                            | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/shadyali) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/shadyali)                                       |
