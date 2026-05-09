@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "ClassroomApp",
+    "slug": "classroomapp",
+    "version": "1.0.0",
+    "scheme": "classroomapp",
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "4591a1f8-4256-4bfc-9168-aca720fa7146"
+      }
+    },
+    "android": {
+      "package": "com.mahmoudemam.classroomapp"
+    }
+  }
+}
