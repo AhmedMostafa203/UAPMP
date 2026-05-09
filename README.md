@@ -119,12 +119,6 @@ config/       # Configuration files
 
 ---
 
-## 📄 License
-
-Specify your license here (e.g., MIT, Apache 2.0).
-
----
-
 <p align="center">
   Made with ❤️ by the UAPMP Team.
 </p>
