@@ -440,7 +440,7 @@ router.post("/login", async (req, res) => {
         code: "INVALID_CREDENTIALS",
       });
     }
-    if (!user.isEmailVerified) {
+    if (!user.isEmailVerified && user.role !== 'instructor') {
       return res.status(403).json({
         message: "Please verify your email first",
         code: "EMAIL_NOT_VERIFIED",
